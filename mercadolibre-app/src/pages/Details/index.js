@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import productDetail from '../../store/actions/products';
 import Breadcrumb from '../../componets/Breadcrumb';
 import styles from './detail.module.scss';
+import Loader from '../../componets/Spinner';
 const Index = ({
   match: {
     params: { id },
@@ -10,6 +11,7 @@ const Index = ({
   item,
   categories,
   fetchProductDetail,
+  isFetching
 }) => {
 
   const decimals =
@@ -23,6 +25,7 @@ console.log(decimals)
 
   return (
     <>
+    {isFetching && <Loader/>}
       {item.price && (
         <>
           <Breadcrumb categories={categories.concat([item.title])} />
@@ -62,6 +65,7 @@ console.log(decimals)
 const mapStateToProps = (state) => ({
   item: state.products.detail,
   categories: state.products.categories,
+  isFetching: state.products.isFetching,
 });
 
 const mapDispatchToProps = {

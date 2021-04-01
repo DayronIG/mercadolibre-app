@@ -17,7 +17,7 @@ export default handleActions(
     }),
     [types.PRODUCTS_FETCH_SUCCESS]: (state, { payload: { categories,items } }) => ({
       ...state,
-      isFetching: true,
+      isFetching: false,
       categories,
       items
     }),
@@ -32,7 +32,7 @@ export default handleActions(
     }),
     [types.PRODUCT_DETAIL_FETCH_SUCCESS]: (state, { payload: { items } }) => ({
       ...state,
-      isFetching: true,
+      isFetching: false,
       detail:items,
     }),
     [types.PRODUCT_DETAIL_FETCH_FAILED]: (state) => ({
